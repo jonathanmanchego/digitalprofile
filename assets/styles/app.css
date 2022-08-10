@@ -1,0 +1,28 @@
+@import url("./styles.css");
+@import url("./fonts.css");
+
+.app {
+  background: #0141ad;
+  color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+}
+.app h1 {
+  font-family: "Lobster", cursive;
+  text-shadow: 0 0 10px #fff;
+  font-size: 5rem;
+  text-align: center;
+}
+@media screen and (max-width: 768px) {
+  .app h1 {
+    font-size: 3rem;
+  }
+}
+@media screen and (max-width: 480px) {
+  .app h1 {
+    font-size: 2.5rem;
+  }
+}
