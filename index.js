@@ -11,6 +11,16 @@ const server = http.createServer((req, res) => {
       fs.readFile('./assets/styles/app.css', (err, data) => {
         res.end(data);
       } );
+    } else if (req.url === '/assets/styles/styles.css') {
+      fs.readFile('./assets/styles/styles.css', (err, data) => {
+      res.writeHead(200, { 'Content-Type': 'text/css' });
+        res.end(data);
+      } );
+    } else if( req.url === '/assets/styles/fonts.css') {
+      fs.readFile('./assets/styles/fonts.css', (err, data) => {
+      res.writeHead(200, { 'Content-Type': 'text/css' });
+        res.end(data);
+      } );
     }
 });
 
