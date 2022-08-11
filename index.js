@@ -6,8 +6,7 @@ const server = http.createServer((req, res) => {
       fs.readFile('./index.html', (err, data) => {
         res.end(data);
       });
-    }
-    if (req.url === '/assets/styles/app.css') {
+    }else if (req.url === '/assets/styles/app.css') {
       res.writeHead(200, { 'Content-Type': 'text/css' });
       fs.readFile('./assets/styles/app.css', (err, data) => {
         res.end(data);
