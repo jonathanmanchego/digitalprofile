@@ -21,6 +21,11 @@ const server = http.createServer((req, res) => {
       res.writeHead(200, { 'Content-Type': 'text/css' });
         res.end(data);
       } );
+    } else if(req.url === '/favicon.ico') {
+      fs.readFile('./favicon.ico', (err, data) => {
+        res.writeHead(200, { 'Content-Type': 'image/x-icon' });
+        res.end(data);
+      } );
     }
 });
 
