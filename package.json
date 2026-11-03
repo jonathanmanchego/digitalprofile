@@ -1,7 +1,7 @@
 {
   "name": "digitalprofile",
   "version": "1.0.0",
-  "description": "Proyecto para landing de teammanchas.com",
+  "description": "Proyecto para landing de teammanchas.com.pe",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"

@@ -411,6 +411,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 
 .navegador { margin: 16px; border-radius: 12px; overflow: hidden; border: 1px solid #2A3042; background: var(--panel-hondo); }
 .navegador__url { display: flex; align-items: center; gap: 8px; padding: 8px 14px; background: #161A26; font: 400 .76rem var(--f-mono); color: var(--gris-claro); }
+#sim-url { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .navegador__candado { width: 9px; height: 8px; border-radius: 2px; background: var(--ok); position: relative; margin-top: 4px; }
 .navegador__candado::before { content: ""; position: absolute; left: 1.5px; top: -5px; width: 6px; height: 6px; border: 1.5px solid var(--ok); border-bottom: 0; border-radius: 4px 4px 0 0; box-sizing: border-box; }
 .navegador__pantalla { position: relative; height: clamp(320px, 31vw, 392px); overflow: hidden; background: #fff; }

@@ -162,7 +162,7 @@
     pantalla.style.setProperty('--p', p);
     pantalla.classList.toggle('dividida', !staging && p > 0 && p < 1);
     $('#sim-divisor').textContent = S.destino ? `v${S.destino.version}` : '';
-    $('#sim-url').textContent = staging ? 'staging.tienda-demo.teammanchas.com' : 'tienda-demo.teammanchas.com';
+    $('#sim-url').textContent = staging ? 'staging.tienda-demo.teammanchas.com.pe' : 'tienda-demo.teammanchas.com.pe';
     $('#sim-version').textContent = staging ? `v${S.destino.version} en staging` : `v${S.prod.version}`;
 
     const pct = Math.round(S.trafico * 100);
@@ -348,7 +348,7 @@
         [380, `[main ${h}] ${mensaje}`],
         [200, ` ${nArchivos} ${nArchivos === 1 ? 'archivo modificado' : 'archivos modificados'}`, 'tenue'],
         [350, 'git push origin main', 'cmd'],
-        [550, 'To git.teammanchas.com:tienda-demo.git', 'tenue'],
+        [550, 'To git.teammanchas.com.pe:tienda-demo.git', 'tenue'],
         [200, `   ${S.ultimoHash}..${h}  main -> main`, 'tenue'],
         [300, `Pipeline #${S.pipelineN} iniciado para ${h}`, 'info'],
       ]);
@@ -434,7 +434,7 @@
       S.destino = { ...b, version };
       tabStaging.disabled = false;
       elegirVista('staging');
-      log('Vista previa lista: staging.tienda-demo.teammanchas.com', 'info');
+      log('Vista previa lista: staging.tienda-demo.teammanchas.com.pe', 'info');
       terminarEtapa(4);
 
       // 6. Aprobación
