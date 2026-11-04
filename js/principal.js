@@ -329,6 +329,150 @@
     b.addEventListener('pointerleave', off); b.addEventListener('blur', off);
   });
 
+  /* ---------- Pantallas de proyectos: cada sistema se ve funcionando mientras está a la vista ---------- */
+  const soles = new Intl.NumberFormat('es-PE', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  const entero = new Intl.NumberFormat('es-PE');
+  const espera = (ms) => new Promise((r) => setTimeout(r, ms));
+  const destellar = (el) => { el.classList.remove('destello'); void el.offsetWidth; el.classList.add('destello'); };
+
+  const DEMOS = {
+    // Un cliente agrega prendas al carrito
+    emoda(el, cada = 3000) {
+      const items = $$('.emoda__item', el).slice(0, 4); // la segunda fila queda cortada, como al hacer scroll
+      const carrito = $('[data-carrito]', el);
+      const aviso = $('[data-aviso]', el);
+      let i = 0;
+      let n = 2;
+      return [cada, () => {
+        const item = items[i++ % items.length];
+        item.classList.add('agregado');
+        n = n >= 9 ? 1 : n + 1;
+        carrito.textContent = n;
+        destellar(carrito);
+        aviso.textContent = `${$('p', item).textContent} se agregó al carrito`;
+        aviso.classList.add('ver');
+        setTimeout(() => { aviso.classList.remove('ver'); item.classList.remove('agregado'); }, 1900);
+      }];
+    },
+    // La mesa 4 sigue pidiendo y se ocupa la mesa 5
+    resto(el, cada = 2600) {
+      const cuenta = $('[data-cuenta]', el);
+      const total = $('[data-total]', el);
+      const mesa = $('[data-mesa]', el);
+      const original = cuenta.innerHTML;
+      const extras = [['2× Pisco sour', 44], ['1× Ají de gallina', 36], ['1× Suspiro limeño', 16]];
+      let paso = 0;
+      let suma = 138;
+      const ponerMesa = (estado, texto) => { mesa.className = `mesa ${estado}`; $('span', mesa).textContent = texto; };
+      return [cada, () => {
+        if (paso < extras.length) {
+          const [plato, precio] = extras[paso++];
+          const li = document.createElement('li');
+          li.className = 'nuevo';
+          li.innerHTML = `<span>${plato}</span><b>S/ ${soles.format(precio)}</b>`;
+          cuenta.append(li);
+          suma += precio;
+          if (paso === 1) ponerMesa('ocupada', '2 pers.');
+        } else {
+          cuenta.innerHTML = original;
+          suma = 138;
+          paso = 0;
+          ponerMesa('libre', 'Libre');
+        }
+        total.textContent = `S/ ${soles.format(suma)}`;
+        destellar(total);
+      }];
+    },
+    // Entran pedidos y el tablero se actualiza solo
+    shop(el, cada = 3200) {
+      const lista = $('[data-pedidos-lista]', el);
+      const ventas = $('[data-ventas]', el);
+      const pedidos = $('[data-pedidos]', el);
+      const hoy = $('[data-hoy]', el);
+      const nombres = ['Lucía V.', 'Carlos M.', 'Valeria S.', 'Diego R.', 'Camila T.', 'Andrés F.', 'Paola N.'];
+      let nro = 1049;
+      let v = 12480;
+      let p = 86;
+      let h = 0.58;
+      return [cada, () => {
+        const monto = 49.9 + Math.round(Math.random() * 28) * 10;
+        const enCamino = Math.random() < 0.3;
+        const li = document.createElement('li');
+        li.className = 'nuevo';
+        li.innerHTML = `<b>${nombres[(nro - 1049) % nombres.length]}</b><span>S/ ${soles.format(monto)}</span><small>#${nro++}</small>`
+          + `<em${enCamino ? ' class="camino"' : ''}>${enCamino ? 'En camino' : 'Pagado'}</em>`;
+        lista.prepend(li);
+        lista.lastElementChild.remove();
+        v += monto;
+        ventas.textContent = `S/ ${entero.format(Math.round(v))}`;
+        pedidos.textContent = ++p;
+        destellar(ventas);
+        destellar(pedidos);
+        h = Math.min(0.96, h + 0.03);
+        hoy.style.setProperty('--h', h);
+      }];
+    },
+    // Alguien inicia sesión y el administrador ajusta un permiso
+    acceso(el, cada = 6500) {
+      const correo = $('[data-correo]', el);
+      const clave = $('[data-clave]', el);
+      const boton = $('[data-ingresar]', el);
+      const nota = $('[data-sesion]', el);
+      const permiso = $('[data-permiso]', el);
+      const usuario = correo.textContent;
+      let ocupado = false;
+      return [cada, async () => {
+        if (ocupado) return;
+        ocupado = true;
+        correo.textContent = '';
+        clave.textContent = '';
+        boton.textContent = 'Ingresar';
+        boton.classList.remove('ok');
+        nota.textContent = 'Verificación en dos pasos activa';
+        correo.classList.add('foco');
+        for (const c of usuario) { correo.textContent += c; await espera(45); }
+        correo.classList.remove('foco');
+        clave.classList.add('foco');
+        for (let i = 0; i < 10; i++) { clave.textContent += '•'; await espera(55); }
+        clave.classList.remove('foco');
+        boton.classList.add('pulsado');
+        await espera(220);
+        boton.classList.remove('pulsado');
+        boton.textContent = 'Verificando…';
+        await espera(700);
+        boton.classList.add('ok');
+        boton.textContent = 'Sesión iniciada';
+        nota.textContent = 'Token válido por 15 min';
+        await espera(1200);
+        permiso.classList.toggle('si');
+        destellar(permiso);
+        ocupado = false;
+      }];
+    },
+    // Las métricas de la nube avanzan en vivo
+    nube(el, cada = 1200) {
+      const invocaciones = $('[data-invocaciones]', el);
+      const p95 = $('[data-p95]', el);
+      let n = 182340;
+      return [cada, () => {
+        n += 20 + Math.round(Math.random() * 60);
+        invocaciones.textContent = entero.format(n);
+        p95.textContent = `${78 + Math.round(Math.random() * 14)} ms`;
+      }];
+    },
+  };
+
+  $$('.js-pantalla').forEach((pantalla) => {
+    const crear = DEMOS[pantalla.dataset.demo];
+    if (!crear || reducir) return;
+    const [cada, paso] = crear(pantalla);
+    let timer = 0;
+    new IntersectionObserver(([e]) => {
+      clearInterval(timer);
+      if (e.isIntersecting) { paso(); timer = setInterval(paso, cada); }
+    }, { threshold: 0.5 }).observe(pantalla);
+  });
+
   /* ---------- El hero refleja lo que pase en el simulador ---------- */
   document.addEventListener('tienda:version', (e) => {
     const { version, accion } = e.detail;

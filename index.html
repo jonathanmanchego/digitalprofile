@@ -44,6 +44,37 @@
       <symbol id="simbolo" viewBox="0 0 347 360">
         <use href="#buho"/><use href="#cara"/><use href="#pico"/><use href="#anillo"/>
       </symbol>
+      <!-- Prendas de alpaca para las tiendas de ejemplo: toman el color de `color` -->
+      <symbol id="prenda-chompa" viewBox="0 0 100 100">
+        <path d="M37 15Q50 25 63 15L80 23L95 56L82 62L74 45V87Q50 92 26 87V45L18 62L5 56L20 23Z" fill="currentColor"/>
+        <path d="M37 15Q50 25 63 15" fill="none" stroke="rgba(0,0,0,.25)" stroke-width="3"/>
+        <path d="M27 52H73M27 63H73M26 81Q50 86 74 81M7 53L17 58M93 53L83 58" fill="none" stroke="rgba(0,0,0,.16)" stroke-width="2"/>
+        <path d="M28 57.5l4-3 4 3 4-3 4 3 4-3 4 3 4-3 4 3 4-3 4 3 4-3" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="1.8"/>
+      </symbol>
+      <symbol id="prenda-chalina" viewBox="0 0 100 100">
+        <path d="M28 14Q50 28 72 14L68 32Q50 42 32 32Z" fill="currentColor"/>
+        <path d="M33 30L47 35L45 82H31Z" fill="currentColor"/>
+        <path d="M53 35L67 30L71 77L57 80Z" fill="currentColor"/>
+        <path d="M31 46H46M31 52H46M31 70H45M56 46L68 45M56 52L69 51M57 68L70 66" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="2"/>
+        <path d="M33 82v8M37 82v8M41 82v8M45 82v8M58 80l.5 8M62 79.5l.5 8M66 79l.5 8M70 78l.5 8" stroke="currentColor" stroke-width="1.6"/>
+        <path d="M28 14Q50 28 72 14" fill="none" stroke="rgba(0,0,0,.18)" stroke-width="2"/>
+      </symbol>
+      <symbol id="prenda-poncho" viewBox="0 0 100 100">
+        <path d="M50 14L90 52Q93 56 89 60L71 84H29L11 60Q7 56 10 52Z" fill="currentColor"/>
+        <path d="M22 44H78M17 49H83M20 66H80M24 71H76" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="2.2"/>
+        <path d="M14 57.5l6-4 6 4 6-4 6 4 6-4 6 4 6-4 6 4 6-4 6 4 6-4 6 4" fill="none" stroke="rgba(0,0,0,.2)" stroke-width="2"/>
+        <ellipse cx="50" cy="24" rx="8" ry="4" fill="rgba(0,0,0,.28)"/>
+        <path d="M32 84v7M37 84v7M42 84v7M47 84v7M52 84v7M57 84v7M62 84v7M67 84v7" stroke="currentColor" stroke-width="1.6"/>
+      </symbol>
+      <symbol id="prenda-chullo" viewBox="0 0 100 100">
+        <circle cx="50" cy="15" r="7" fill="currentColor"/>
+        <path d="M21 60Q21 22 50 20Q79 22 79 60Z" fill="currentColor"/>
+        <path d="M22 58H78V66H22Z" fill="rgba(0,0,0,.22)"/>
+        <path d="M23 64L21 82Q27 87 34 81L36 66ZM77 64L79 82Q73 87 66 81L64 66Z" fill="currentColor"/>
+        <path d="M27 84V94M73 84V94" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+        <path d="M28 44l5.5-5 5.5 5 5.5-5 5.5 5 5.5-5 5.5 5 5.5-5 5.5 5" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="2"/>
+        <path d="M30 34H70" fill="none" stroke="rgba(0,0,0,.14)" stroke-width="2"/>
+      </symbol>
     </defs>
   </svg>
 
@@ -351,7 +382,7 @@
           <div class="panel terminal">
             <div class="panel__barra">
               <span class="panel__titulo">Registro del pipeline</span>
-              <span class="panel__meta" id="sim-reloj">0,0 s</span>
+              <span class="panel__meta" id="sim-reloj">0.0 s</span>
             </div>
             <div class="terminal__cuerpo" id="sim-log" role="log" aria-label="Registro del pipeline">
               <p class="log log--tenue">El registro aparece aquí cuando publiques un cambio.</p>
@@ -395,7 +426,31 @@
               <p>Tienda de prendas de alpaca con catálogo, carrito y un panel para gestionar pedidos e inventario.</p>
               <ul class="chips chips--claro"><li>Angular</li><li>API propia</li><li>Pagos en línea</li></ul>
             </div>
-            <div class="maqueta maqueta--tienda" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+            <div class="maqueta" role="img" aria-label="Pantalla de eModa Alpacas: catálogo de prendas con precios y carrito de compras">
+              <div class="pantalla js-pantalla" data-demo="emoda">
+                <div class="pantalla__barra"><i></i><i></i><i></i><span>emoda / catálogo</span></div>
+                <div class="pantalla__vista emoda">
+                  <p class="emoda__aviso">Envío gratis a todo el Perú desde S/ 150</p>
+                  <div class="emoda__cabecera">
+                    <b class="emoda__logo">eModa</b>
+                    <span class="emoda__menu"><u>Mujer</u><span>Hombre</span><span>Accesorios</span><span>Nuevos</span></span>
+                    <span class="emoda__carrito">Carrito <em data-carrito>2</em></span>
+                  </div>
+                  <div class="emoda__filtros"><u>Todo</u><span>Chompas</span><span>Chalinas</span><span>Ponchos</span><small>48 productos</small></div>
+                  <div class="emoda__grilla">
+                    <div class="emoda__item" style="--f:#EFE4D3;--c:#B5875A"><i><svg viewBox="0 0 100 100"><use href="#prenda-chompa"/></svg><b>Nuevo</b><s>Agregado</s></i><p>Chompa Andina</p><span>S/ 189.00</span></div>
+                    <div class="emoda__item" style="--f:#E1E7F1;--c:#5F7299"><i><svg viewBox="0 0 100 100"><use href="#prenda-chalina"/></svg><s>Agregado</s></i><p>Chalina Tejida</p><span>S/ 79.00</span></div>
+                    <div class="emoda__item" style="--f:#F3DFD5;--c:#B0502C"><i><svg viewBox="0 0 100 100"><use href="#prenda-poncho"/></svg><s>Agregado</s></i><p>Poncho Cusco</p><span>S/ 259.00</span></div>
+                    <div class="emoda__item" style="--f:#E5E7EC;--c:#474C59"><i><svg viewBox="0 0 100 100"><use href="#prenda-chullo"/></svg><s>Agregado</s></i><p>Chullo Clásico</p><span>S/ 59.00</span></div>
+                    <div class="emoda__item" style="--f:#E6E9EF;--c:#5A5F6E"><i><svg viewBox="0 0 100 100"><use href="#prenda-poncho"/></svg></i><p>Poncho Gris Perla</p><span>S/ 239.00</span></div>
+                    <div class="emoda__item" style="--f:#EFE7DB;--c:#C9A577"><i><svg viewBox="0 0 100 100"><use href="#prenda-chalina"/></svg></i><p>Chalina Natural</p><span>S/ 89.00</span></div>
+                    <div class="emoda__item" style="--f:#F1E3DD;--c:#9C3F2B"><i><svg viewBox="0 0 100 100"><use href="#prenda-chompa"/></svg></i><p>Chompa Ladrillo</p><span>S/ 199.00</span></div>
+                    <div class="emoda__item" style="--f:#E3E8F1;--c:#33456E"><i><svg viewBox="0 0 100 100"><use href="#prenda-chullo"/></svg></i><p>Chullo Azul Noche</p><span>S/ 65.00</span></div>
+                  </div>
+                  <p class="pantalla__aviso" data-aviso>Chompa Andina se agregó al carrito</p>
+                </div>
+              </div>
+            </div>
           </article>
           <article class="proyecto proyecto--blanco">
             <div class="proyecto__texto">
@@ -404,7 +459,38 @@
               <p>Plataforma para restaurantes: carta, pedidos por mesa y administración desde un solo panel.</p>
               <ul class="chips"><li>Angular</li><li>Express</li><li>TypeORM</li><li>MySQL</li></ul>
             </div>
-            <div class="maqueta maqueta--mesas" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+            <div class="maqueta" role="img" aria-label="Pantalla de Restaurant SaaS: plano del salón con el estado de cada mesa y la cuenta de la mesa 4">
+              <div class="pantalla pantalla--oscura js-pantalla" data-demo="resto">
+                <div class="pantalla__barra"><i></i><i></i><i></i><span>restaurant / salón</span></div>
+                <div class="pantalla__vista resto">
+                  <div class="resto__menu"><b>R</b><i class="on"></i><i></i><i></i><i></i></div>
+                  <div class="resto__salon">
+                    <div class="resto__titulo"><b>Salón principal</b><span><i class="libre"></i>Libre <i class="ocupada"></i>Ocupada <i class="cobrar"></i>Por cobrar</span></div>
+                    <div class="resto__mesas">
+                      <div class="mesa ocupada"><b>M1</b><span>4 pers.</span></div>
+                      <div class="mesa libre"><b>M2</b><span>Libre</span></div>
+                      <div class="mesa cobrar"><b>M3</b><span>S/ 96.00</span></div>
+                      <div class="mesa ocupada sel"><b>M4</b><span>3 pers.</span></div>
+                      <div class="mesa libre" data-mesa><b>M5</b><span>Libre</span></div>
+                      <div class="mesa ocupada"><b>M6</b><span>2 pers.</span></div>
+                      <div class="mesa cobrar"><b>M7</b><span>S/ 154.50</span></div>
+                      <div class="mesa ocupada"><b>M8</b><span>5 pers.</span></div>
+                      <div class="mesa libre"><b>M9</b><span>Libre</span></div>
+                    </div>
+                  </div>
+                  <div class="resto__cuenta">
+                    <div class="resto__titulo"><b>Mesa 4</b><span>Mozo: Luis</span></div>
+                    <ul data-cuenta>
+                      <li><span>2× Lomo saltado</span><b>S/ 78.00</b></li>
+                      <li><span>1× Ceviche clásico</span><b>S/ 42.00</b></li>
+                      <li><span>1× Chicha morada 1 L</span><b>S/ 18.00</b></li>
+                    </ul>
+                    <p class="resto__total"><span>Total</span><b data-total>S/ 138.00</b></p>
+                    <span class="resto__cobrar">Cobrar</span>
+                  </div>
+                </div>
+              </div>
+            </div>
           </article>
           <article class="proyecto proyecto--tinta">
             <div class="proyecto__texto">
@@ -413,7 +499,34 @@
               <p>Tienda pública, panel de administración y tablero de ventas que comparten la misma API.</p>
               <ul class="chips chips--claro"><li>React</li><li>Angular</li><li>Node.js</li></ul>
             </div>
-            <div class="maqueta maqueta--barras" aria-hidden="true"><i style="--h:.45"></i><i style="--h:.7"></i><i style="--h:.55"></i><i style="--h:.9"></i><i style="--h:.65"></i><i style="--h:1"></i><i style="--h:.8"></i></div>
+            <div class="maqueta" role="img" aria-label="Pantalla de ShopGo: tablero con las ventas del día, el gráfico semanal y los últimos pedidos">
+              <div class="pantalla js-pantalla" data-demo="shop">
+                <div class="pantalla__barra"><i></i><i></i><i></i><span>shopgo / resumen</span></div>
+                <div class="pantalla__vista shop">
+                  <div class="shop__menu"><b>ShopGo</b><u>Resumen</u><span>Pedidos</span><span>Productos</span><span>Clientes</span><span>Reportes</span></div>
+                  <div class="shop__cuerpo">
+                    <div class="shop__titulo"><b>Resumen de hoy</b><span><i></i>En vivo</span></div>
+                    <div class="shop__kpis">
+                      <div><span>Ventas</span><b data-ventas>S/ 12,480</b><em>+12 %</em></div>
+                      <div><span>Pedidos</span><b data-pedidos>86</b><em>+8 %</em></div>
+                      <div><span>Ticket promedio</span><b>S/ 145</b><em>+3 %</em></div>
+                    </div>
+                    <div class="shop__fila">
+                      <div class="shop__grafico">
+                        <span>Ventas de la semana</span>
+                        <div class="shop__barras"><i style="--h:.46"><small>L</small></i><i style="--h:.62"><small>M</small></i><i style="--h:.54"><small>M</small></i><i style="--h:.78"><small>J</small></i><i style="--h:.7"><small>V</small></i><i style="--h:.92"><small>S</small></i><i class="hoy" style="--h:.58" data-hoy><small>Hoy</small></i></div>
+                      </div>
+                      <ul class="shop__pedidos" data-pedidos-lista>
+                        <li><b>María P.</b><span>S/ 219.00</span><small>#1048</small><em>Pagado</em></li>
+                        <li><b>Jorge L.</b><span>S/ 89.90</span><small>#1047</small><em class="camino">En camino</em></li>
+                        <li><b>Rosa Q.</b><span>S/ 342.50</span><small>#1046</small><em>Pagado</em></li>
+                        <li><b>Luis C.</b><span>S/ 129.00</span><small>#1045</small><em>Pagado</em></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </article>
           <article class="proyecto proyecto--blanco">
             <div class="proyecto__texto">
@@ -422,7 +535,34 @@
               <p>Inicio de sesión, roles y permisos listos para conectar a cualquier sistema nuevo.</p>
               <ul class="chips"><li>Angular</li><li>Node.js</li><li>JWT</li></ul>
             </div>
-            <div class="maqueta maqueta--login" aria-hidden="true"><i></i><i></i><i></i></div>
+            <div class="maqueta" role="img" aria-label="Pantalla del módulo de acceso: inicio de sesión con verificación en dos pasos y tabla de roles y permisos">
+              <div class="pantalla js-pantalla" data-demo="acceso">
+                <div class="pantalla__barra"><i></i><i></i><i></i><span>acceso / ingresar</span></div>
+                <div class="pantalla__vista acceso">
+                  <div class="acceso__login">
+                    <i class="acceso__candado"></i>
+                    <b class="acceso__titulo">Inicia sesión</b>
+                    <span class="acceso__etiqueta">Correo</span>
+                    <span class="acceso__campo" data-correo>ana.torres@empresa.pe</span>
+                    <span class="acceso__etiqueta">Contraseña</span>
+                    <span class="acceso__campo" data-clave>••••••••••</span>
+                    <span class="acceso__boton" data-ingresar>Ingresar</span>
+                    <small class="acceso__nota" data-sesion>Verificación en dos pasos activa</small>
+                  </div>
+                  <div class="acceso__roles">
+                    <div class="acceso__cabeza"><b>Roles y permisos</b><span>12 usuarios</span></div>
+                    <div class="permisos">
+                      <div><span></span><b>Admin</b><b>Caja</b><b>Mozo</b></div>
+                      <div><span>Ver ventas</span><i class="si"></i><i class="si"></i><i></i></div>
+                      <div><span>Tomar pedidos</span><i class="si"></i><i class="si"></i><i class="si"></i></div>
+                      <div><span>Anular pedidos</span><i class="si"></i><i class="si" data-permiso></i><i></i></div>
+                      <div><span>Editar la carta</span><i class="si"></i><i></i><i></i></div>
+                      <div><span>Gestionar usuarios</span><i class="si"></i><i></i><i></i></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </article>
           <article class="proyecto proyecto--azul">
             <div class="proyecto__texto">
@@ -431,7 +571,35 @@
               <p>Prototipos serverless y gestión de identidades para una plataforma que crece por módulos.</p>
               <ul class="chips chips--claro"><li>Serverless</li><li>IAM</li><li>AWS</li></ul>
             </div>
-            <div class="maqueta maqueta--nube" aria-hidden="true"><i></i><i></i><i></i><i></i><b></b><b></b><b></b></div>
+            <div class="maqueta" role="img" aria-label="Pantalla de Potreros: diagrama de la arquitectura serverless con su estado y sus métricas">
+              <div class="pantalla pantalla--oscura js-pantalla" data-demo="nube">
+                <div class="pantalla__barra"><i></i><i></i><i></i><span>potreros / arquitectura</span></div>
+                <div class="pantalla__vista nube">
+                  <div class="nube__titulo"><b>potreros-prod</b><span class="nube__estado"><i></i>Todo operativo</span><span class="nube__region">sa-east-1</span></div>
+                  <div class="nube__diagrama">
+                    <svg class="nube__lineas" viewBox="0 0 100 100" preserveAspectRatio="none">
+                      <path d="M12 50H36M36 50V86M36 50C49 50 49 14 62 14M36 50H62M36 50C49 50 49 86 62 86M62 14C75 14 75 50 88 50M62 50H88M62 86C75 86 75 50 88 50"/>
+                      <path class="nube__flujo" d="M12 50H36C49 50 49 14 62 14C75 14 75 50 88 50"/>
+                      <path class="nube__flujo nube__flujo--2" d="M12 50H62H88"/>
+                      <path class="nube__flujo nube__flujo--3" d="M12 50H36C49 50 49 86 62 86C75 86 75 50 88 50"/>
+                    </svg>
+                    <span class="nodo" style="--x:12;--y:50"><small>Cliente</small>App web</span>
+                    <span class="nodo nodo--clave" style="--x:36;--y:50"><small>Entrada</small>API Gateway</span>
+                    <span class="nodo" style="--x:36;--y:88"><small>Identidad</small>Cognito</span>
+                    <span class="nodo" style="--x:62;--y:14"><small>Lambda</small>lotes</span>
+                    <span class="nodo" style="--x:62;--y:50"><small>Lambda</small>ganado</span>
+                    <span class="nodo" style="--x:62;--y:86"><small>Lambda</small>ventas</span>
+                    <span class="nodo" style="--x:88;--y:50"><small>Datos</small>DynamoDB</span>
+                  </div>
+                  <div class="nube__datos">
+                    <p><span>Invocaciones (24 h)</span><b data-invocaciones>182,340</b></p>
+                    <p><span>Latencia p95</span><b data-p95>84 ms</b></p>
+                    <p><span>Errores</span><b>0.02 %</b></p>
+                    <p><span>Costo del mes</span><b>US$ 18.40</b></p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </article>
         </div>
         <div class="proyectos__avance" aria-hidden="true"><span></span></div>

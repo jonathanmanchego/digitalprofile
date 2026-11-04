@@ -13,10 +13,11 @@
   const hash = () => Math.random().toString(16).slice(2, 9).padEnd(7, '0');
 
   const COLORES = { azul: '#0741AD', verde: '#13804F', naranja: '#C8530F' };
+  // `s` es la prenda del sprite de index.html; `c`, su color, y `f`, el fondo de la foto.
   const PRODUCTOS = [
-    { n: 'Chompa de alpaca', p: 'S/ 189.00', c: '#D9C9B2' },
-    { n: 'Chalina tejida', p: 'S/ 79.00', c: '#BAC4D8' },
-    { n: 'Gorro andino', p: 'S/ 59.00', c: '#CDB9C4' },
+    { n: 'Chompa de alpaca', p: 'S/ 189.00', s: 'chompa', c: '#B5875A', f: '#EFE4D3' },
+    { n: 'Chalina tejida', p: 'S/ 79.00', s: 'chalina', c: '#5F7299', f: '#E1E7F1' },
+    { n: 'Gorro andino', p: 'S/ 59.00', s: 'chullo', c: '#8A4A63', f: '#F0E1E7' },
   ];
   const ETAPAS = ['Commit', 'Construcción', 'Pruebas', 'Seguridad', 'Staging', 'Aprobación', 'Producción'];
   const ESTADOS = { espera: 'En espera', corriendo: 'En curso', ok: 'Listo', fallo: 'Falló', pausa: 'Esperándote', omitida: 'Omitida' };
@@ -152,7 +153,7 @@
     <div class="tienda__cabecera"><span class="tienda__marca">Alpaca &amp; Co.</span><span class="tienda__carrito">Carrito (2)</span></div>
     ${cfg.envio ? '<div class="tienda__aviso">Envío gratis en compras desde S/ 150</div>' : ''}
     <div class="tienda__banner"><p class="tienda__titulo">${esc(cfg.titulo.trim()) || '&nbsp;'}</p><span class="tienda__boton" style="background:${COLORES[cfg.color]}">Comprar ahora</span></div>
-    <div class="tienda__productos">${PRODUCTOS.map((p) => `<div class="producto"><i style="--c:${p.c}"></i><b>${p.n}</b><span>${p.p}</span></div>`).join('')}</div>`;
+    <div class="tienda__productos">${PRODUCTOS.map((p) => `<div class="producto"><i style="--c:${p.f};color:${p.c}"><svg viewBox="0 0 100 100"><use href="#prenda-${p.s}"/></svg></i><b>${p.n}</b><span>${p.p}</span></div>`).join('')}</div>`;
 
   function pintarVista() {
     const staging = S.vista === 'staging' && S.destino;
